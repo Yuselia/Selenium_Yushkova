@@ -22,9 +22,7 @@ namespace TestProject1
         [Test]
         public void FirstTest()
         {
-            driver.Url = "http://www.google.com";
-            driver.FindElement(By.Name("q")).SendKeys("Webdriver");
-            wait.Until(ExpectedConditions.TitleIs("Webdriver - Поиск в Google"));
+            driver.Url = "http://www.yandex.com";
         }
 
         [TearDown]
