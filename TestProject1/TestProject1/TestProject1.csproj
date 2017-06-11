@@ -62,6 +62,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Admin_menu.cs" />
+    <Compile Include="FindStickers.cs" />
     <Compile Include="LogChrome.cs" />
     <Compile Include="LogFFNightly.cs" />
     <Compile Include="OldFF.cs" />
