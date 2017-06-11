@@ -39,6 +39,7 @@ namespace TestProject1
             for (int i=0; i < elements.Count; i++)
             {
                 elements[i].Click();
+                driver.FindElement(By.CssSelector("h1"));
                 elements = driver.FindElements(By.Id("app-"));
                 ReadOnlyCollection<IWebElement> children = elements[i].FindElements(By.ClassName("name"));
                 if (children!=null)
@@ -46,12 +47,14 @@ namespace TestProject1
                     for (int j=0; j < children.Count; j++)
                     {
                         children[j].Click();
+                        driver.FindElement(By.CssSelector("h1"));
                         elements = driver.FindElements(By.Id("app-"));
                         children = elements[i].FindElements(By.ClassName("name"));
                     }
                 }
                 elements = driver.FindElements(By.Id("app-"));
             }
+            
         }
 
         [TearDown]
