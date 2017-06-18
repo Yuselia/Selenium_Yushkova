@@ -70,6 +70,7 @@
     <Compile Include="MyFirstTest.cs" />
     <Compile Include="LogIE.cs" />
     <Compile Include="LogFF.cs" />
+    <Compile Include="Countries.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

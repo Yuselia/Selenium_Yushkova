@@ -40,7 +40,6 @@ namespace TestProject1
                     throw new Exception("Product has more then 1 stickers");
                 }
             }
-
         }
 
         [TearDown]
