@@ -7,7 +7,6 @@ using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.IE;
 using System.Collections.ObjectModel;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace TestProject1
 {

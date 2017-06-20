@@ -71,6 +71,7 @@
     <Compile Include="LogIE.cs" />
     <Compile Include="LogFF.cs" />
     <Compile Include="Countries.cs" />
+    <Compile Include="Task10.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
