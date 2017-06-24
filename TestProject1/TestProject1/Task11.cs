@@ -16,6 +16,9 @@ namespace TestProject1
         private IWebDriver driver;
         private WebDriverWait wait;
 
+        string country = "United States";
+        string zone = "California";
+
         string firstPartEmail = "yuselia";
         string secondPartEmail= "@yandex.ru";
         string randomPartEmail = "";
@@ -43,8 +46,13 @@ namespace TestProject1
             box.FindElement(By.Name("firstname")).SendKeys("Ivan");
             box.FindElement(By.Name("lastname")).SendKeys("Ivanov");
             box.FindElement(By.Name("address1")).SendKeys("1556 Broadway, suite 416");
-            box.FindElement(By.Name("postcode")).SendKeys("10120"); 
-            box.FindElement(By.Name("city")).SendKeys("New York"+Keys.Tab+Keys.Enter+"United S"+ Keys.Enter + Keys.Tab + Keys.Tab);
+            box.FindElement(By.Name("postcode")).SendKeys("10120");
+            box.FindElement(By.Name("city")).SendKeys("New York");
+            SelectElement selectCountry = new SelectElement(box.FindElement(By.Name("country_code")));
+            selectCountry.SelectByText(country);
+            wait.Until(ExpectedConditions.ElementToBeClickable(box.FindElement(By.CssSelector("select[name=zone_code]"))));
+            SelectElement selectZone = new SelectElement(box.FindElement(By.CssSelector("select[name=zone_code]")));
+            selectZone.SelectByText(zone);
             randomPartEmail = GetRandomPart();
             email = firstPartEmail + "+" + randomPartEmail + secondPartEmail;
             box.FindElement(By.Name("email")).SendKeys(email);
@@ -67,7 +75,6 @@ namespace TestProject1
                     }
                     else DisplayNotice(notice);
             }
-
             driver.FindElement(By.XPath("//a[contains(@href, 'logout')]")).Click();
             wait.Until(ExpectedConditions.ElementExists(By.Name("login")));
 

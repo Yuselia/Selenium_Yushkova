@@ -18,3 +18,6 @@ C:\Users\genesys\Documents\Visual Studio 2017\Projects\TestProject1\TestProject1
 C:\Users\genesys\Documents\Visual Studio 2017\Projects\TestProject1\TestProject1\obj\Debug\TestProject1.csprojResolveAssemblyReference.cache
 C:\Users\genesys\Documents\Visual Studio 2017\Projects\TestProject1\TestProject1\obj\Debug\TestProject1.dll
 C:\Users\genesys\Documents\Visual Studio 2017\Projects\TestProject1\TestProject1\obj\Debug\TestProject1.pdb
+C:\Users\genesys\Documents\Visual Studio 2017\Projects\TestProject1\TestProject1\obj\Debug\TestProject1.Properties.Resources.resources
+C:\Users\genesys\Documents\Visual Studio 2017\Projects\TestProject1\TestProject1\obj\Debug\TestProject1.csproj.GenerateResource.Cache
+C:\Users\genesys\Documents\Visual Studio 2017\Projects\TestProject1\TestProject1\bin\Debug\img.jpeg
