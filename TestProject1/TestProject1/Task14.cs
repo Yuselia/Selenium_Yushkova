@@ -24,7 +24,7 @@ namespace TestProject1
         int r;
         string mainWindow;
         string newWindow;
-        IList<string> oldWindows;
+        IList<string> oldWindows = new List<string>();
 
         [SetUp]
         public void start()
@@ -74,7 +74,7 @@ namespace TestProject1
 
         public Func<IWebDriver, string> ThereIsWindowOtherThan(IList<string> oldWindows)
         {
-            IList<string> handles;
+            IList<string> handles = new List<string>();
 
             return (driver) =>
             {
