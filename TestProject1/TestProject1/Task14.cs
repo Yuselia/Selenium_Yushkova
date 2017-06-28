@@ -19,12 +19,14 @@ namespace TestProject1
         private WebDriverWait wait;
 
         ReadOnlyCollection<IWebElement> referencesEditCountry;
-        ReadOnlyCollection<IWebElement> referencesNewWindow;
+        ReadOnlyCollection<IWebElement> referencesNewWindows;
         Random rnd = new Random();
         int r;
         string mainWindow;
         string newWindow;
         IList<string> oldWindows = new List<string>();
+        IList<string> handles = new List<string>();
+        IList<string> stringsWithHandles = new List<string>();
 
         [SetUp]
         public void start()
@@ -52,18 +54,20 @@ namespace TestProject1
             referencesEditCountry[r].Click();
             wait.Until(ExpectedConditions.TitleIs("Edit Country | My Store"));
 
-            referencesNewWindow=driver.FindElements(By.CssSelector("i.fa-external-link"));
+            referencesNewWindows=driver.FindElements(By.CssSelector("i.fa-external-link"));
 
             //Was open new window?
-            mainWindow = driver.CurrentWindowHandle;//id current window
-            oldWindows = driver.WindowHandles;//list with id's of all windows were open
-            referencesNewWindow[0].Click(); 
-            newWindow = wait.Until(ThereIsWindowOtherThan(oldWindows));
-            driver.SwitchTo().Window(newWindow);
-            driver.Close();
-            driver.SwitchTo().Window(mainWindow);
+            foreach (IWebElement r in referencesNewWindows)
+            {
+                mainWindow = driver.CurrentWindowHandle;//id current window
+                oldWindows = driver.WindowHandles; ;//list with id's of all windows were open
+                r.Click();
+                newWindow = wait.Until(ThereIsWindowOtherThan(oldWindows));
+                driver.SwitchTo().Window(newWindow);
+                driver.Close();
+                driver.SwitchTo().Window(mainWindow);
+            } 
         }
-
 
         [TearDown]
         public void stop()
@@ -74,8 +78,6 @@ namespace TestProject1
 
         public Func<IWebDriver, string> ThereIsWindowOtherThan(IList<string> oldWindows)
         {
-            IList<string> handles = new List<string>();
-
             return (driver) =>
             {
                 for (int count = 0; ; count++)
@@ -84,19 +86,25 @@ namespace TestProject1
                         throw new TimeoutException();
                     try
                     {
-                        handles = driver.WindowHandles;
+                        stringsWithHandles.Clear();
+                        handles =driver.WindowHandles;
+                        foreach (string h in handles)
+                        {
+                            stringsWithHandles.Add(h);
+                        }
                         for (int i=0; i<oldWindows.Count; i++)
                         {
-                            handles.Remove(oldWindows[i]);
+                            stringsWithHandles.Remove(oldWindows[i]);
                         }
 
-                        if (handles.Count > 0)
-                            return handles[0]; 
+                        if (stringsWithHandles.Count > 0)
+                            return stringsWithHandles[0]; 
                         break;
                     }
                     catch (IndexOutOfRangeException e)
                     { }
                     Thread.Sleep(1000);
+                    handles.Clear();
                 }
                 return null;
             };

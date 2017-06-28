@@ -81,6 +81,7 @@
     <Compile Include="Task12.cs" />
     <Compile Include="Task13.cs" />
     <Compile Include="Task14.cs" />
+    <Compile Include="Task17.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
